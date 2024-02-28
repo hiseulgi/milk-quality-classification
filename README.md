@@ -1,5 +1,33 @@
 # Laporan Proyek Machine Learning - Muhammad Bagus Adi Prayoga
 
+Project ini merupakan bagian dari Proyek Pertama pada Machine Learning Terapan oleh Dicoding. Pada proyek ini, saya mengangkat topik "Klasifikasi Kualitas Susu Sapi dengan Machine Learning". Tujuan dari proyek ini adalah untuk mengembangkan model machine learning yang mampu mengklasifikasikan kualitas susu sapi berdasarkan karakteristiknya.
+
+## Daftar Isi
+
+- [Laporan Proyek Machine Learning - Muhammad Bagus Adi Prayoga](#laporan-proyek-machine-learning---muhammad-bagus-adi-prayoga)
+  - [Daftar Isi](#daftar-isi)
+  - [Domain Proyek](#domain-proyek)
+  - [Business Understanding](#business-understanding)
+    - [Problem Statements](#problem-statements)
+    - [Goals](#goals)
+    - [Solution Statements](#solution-statements)
+  - [Data Understanding](#data-understanding)
+    - [Descriptive Statistics](#descriptive-statistics)
+    - [EDA: Uni-Variate Analysis](#eda-uni-variate-analysis)
+    - [EDA: Multi-Variate Analysis](#eda-multi-variate-analysis)
+  - [Data Preparation](#data-preparation)
+    - [Outlier Handling](#outlier-handling)
+    - [Splitting Data](#splitting-data)
+    - [Feature Scaling (Standardization)](#feature-scaling-standardization)
+  - [Modeling](#modeling)
+  - [Evaluation](#evaluation)
+    - [Cross Validation](#cross-validation)
+    - [Confusion Matrix](#confusion-matrix)
+    - [Classification Report](#classification-report)
+    - [Kesimpulan Evaluasi](#kesimpulan-evaluasi)
+  - [Acknowledgement](#acknowledgement)
+
+
 ## Domain Proyek
 
 Susu sapi adalah komponen penting dalam rantai pangan manusia. Memastikan kualitas susu yang tinggi adalah suatu keharusan untuk memenuhi standar keamanan dan gizi yang diharapkan oleh konsumen. Standar kualitas yang ketat diterapkan dalam industri susu untuk memastikan produk yang dihasilkan memenuhi persyaratan yang ditetapkan.
@@ -380,10 +408,15 @@ weighted avg       0.99      0.99      0.99       130
 
 ### Kesimpulan Evaluasi
 
-Dalam proses evaluasi, selain melihat akurasi dari model, 
+Selain melihat performa dari model train data dan test data, dalam evaluasi ini juga melihat performa pada uji cross validasi untuk mengetahui apakah model yang dibuat memiliki kemungkinan overfitting dan underfitting dengan melihat akurasi rata-rata dan standar deviasi yang rendah.
+
+Berdasarkan hasil evaluasi, tidak ada perbedaan yang signifikan antara performa model pada train data, test data, dan cross validation. Hal ini menunjukkan bahwa model yang dibangun memiliki kemungkinan kecil untuk overfitting dan underfitting.
+
+Jika dilihat dari hasil evaluasi, model **Decision Tree** memiliki performa terbaik dengan akurasi 100% dan F1-Score 100%. Akan tetapi, model ini memiliki kecenderungan untuk overfitting. Oleh karena itu, model **Voting Classifier** yang menggabungkan tiga model machine learning terbaik sebelumnya adalah model terbaik yang memenuhi standar performa yang ditetapkan. Model **Voting Classifier** juga memiliki akurasi train data, test data, dan cross validation yang perbedaannya sangat kecil, sehingga model ini memiliki kemungkinan kecil untuk overfitting dan underfitting.
 
 ## Acknowledgement
 
-- https://www.studysmarter.co.uk/explanations/business-studies/managerial-economics/decision-tree-method/#:~:text=The%20Decision%20Tree%20Method%20comes,small%20variations%2C%20and%20biased%20learning.
-- https://dhirajkumarblog.medium.com/top-4-advantages-and-disadvantages-of-support-vector-machine-or-svm-a3c06a2b107
-- https://www.fromthegenesis.com/pros-and-cons-of-k-nearest-neighbors/
+- Pradana, R. A., Cholissodin, I., & Hidayat, N. (n.d.). Klasifikasi Mutu Susu Sapi menggunakan Metode Modified K-Nearest Neighbor (MKNN). Retrieved from https://j-ptiik.ub.ac.id/index.php/j-ptiik/article/view/10813
+- Business Studies. (n.d.). Retrieved from https://www.studysmarter.co.uk/explanations/business-studies/managerial-economics/decision-tree-method/#:~:text=The%20Decision%20Tree%20Method%20comes,small%20variations%2C%20and%20biased%20learning
+- K, D. (2023). Top 4 advantages and disadvantages of Support Vector Machine or SVM. Retrieved from https://dhirajkumarblog.medium.com/top-4-advantages-and-disadvantages-of-support-vector-machine-or-svm-a3c06a2b107
+- Genesis, By, & Genesis. (2018). Pros and Cons of K-Nearest Neighbors. Retrieved from https://www.fromthegenesis.com/pros-and-cons-of-k-nearest-neighbors/
