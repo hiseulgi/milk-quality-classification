@@ -370,57 +370,55 @@ $$
 4. ***F1-Score***: Rata-rata harmonik dari *precision* dan *recall*.
 
 Beriikut adalah hasil dari *classification report* untuk model yang telah dibangun:
-```
-Classification report SVC:
-              precision    recall  f1-score   support
 
-         0.0       1.00      0.90      0.95        10
-         1.0       1.00      1.00      1.00        66
-         2.0       0.98      1.00      0.99        54
+<br>
 
-    accuracy                           0.99       130
-   macro avg       0.99      0.97      0.98       130
-weighted avg       0.99      0.99      0.99       130
+Tabel 5. Classification Report SVC
+|               | precision | recall | f1-score | support |
+|---------------|-----------|--------|----------|---------|
+| 0.0           | 1.00      | 0.90   | 0.95     | 10      |
+| 1.0           | 1.00      | 1.00   | 1.00     | 66      |
+| 2.0           | 0.98      | 1.00   | 0.99     | 54      |
+| accuracy      |           |        | 0.99     | 130     |
+| macro avg     | 0.99      | 0.97   | 0.98     | 130     |
+| weighted avg  | 0.99      | 0.99   | 0.99     | 130     |
 
----
+<br>
 
-Classification report Decision Tree:
-              precision    recall  f1-score   support
+Tabel 6. Classification Report Decision Tree
+|               | precision | recall | f1-score | support |
+|---------------|-----------|--------|----------|---------|
+| 0.0           | 1.00      | 1.00   | 1.00     | 10      |
+| 1.0           | 1.00      | 1.00   | 1.00     | 66      |
+| 2.0           | 1.00      | 1.00   | 1.00     | 54      |
+| accuracy      |           |        | 1.00     | 130     |
+| macro avg     | 1.00      | 1.00   | 1.00     | 130     |
+| weighted avg  | 1.00      | 1.00   | 1.00     | 130     |
 
-         0.0       1.00      1.00      1.00        10
-         1.0       1.00      1.00      1.00        66
-         2.0       1.00      1.00      1.00        54
+<br>
 
-    accuracy                           1.00       130
-   macro avg       1.00      1.00      1.00       130
-weighted avg       1.00      1.00      1.00       130
+Tabel 7. Classification Report KNN
+|               | precision | recall | f1-score | support |
+|---------------|-----------|--------|----------|---------|
+| 0.0           | 1.00      | 0.90   | 0.95     | 10      |
+| 1.0           | 1.00      | 1.00   | 1.00     | 66      |
+| 2.0           | 0.98      | 1.00   | 0.99     | 54      |
+| accuracy      |           |        | 0.99     | 130     |
+| macro avg     | 0.99      | 0.97   | 0.98     | 130     |
+| weighted avg  | 0.99      | 0.99   | 0.99     | 130     |
 
----
+<br>
 
-Classification report KNN:
-              precision    recall  f1-score   support
+Tabel 8. Classification Report Voting Classifier
+|               | precision | recall | f1-score | support |
+|---------------|-----------|--------|----------|---------|
+| 0.0           | 1.00      | 0.90   | 0.95     | 10      |
+| 1.0           | 1.00      | 1.00   | 1.00     | 66      |
+| 2.0           | 0.98      | 1.00   | 0.99     | 54      |
+| accuracy      |           |        | 0.99     | 130     |
+| macro avg     | 0.99      | 0.97   | 0.98     | 130     |
+| weighted avg  | 0.99      | 0.99   | 0.99     | 130     |
 
-         0.0       1.00      0.90      0.95        10
-         1.0       1.00      1.00      1.00        66
-         2.0       0.98      1.00      0.99        54
-
-    accuracy                           0.99       130
-   macro avg       0.99      0.97      0.98       130
-weighted avg       0.99      0.99      0.99       130
-
----
-
-Classification report Voting Classifier:
-              precision    recall  f1-score   support
-
-         0.0       1.00      0.90      0.95        10
-         1.0       1.00      1.00      1.00        66
-         2.0       0.98      1.00      0.99        54
-
-    accuracy                           0.99       130
-   macro avg       0.99      0.97      0.98       130
-weighted avg       0.99      0.99      0.99       130
-```
 
 Dari interpretasi tersebut, dapat disimpulkan bahwa semua model memiliki performa yang sangat baik dengan akurasi yang tinggi dan *f1-score* yang baik pula. Namun, model ***Decision Tree*** memperoleh hasil yang sempurna dengan akurasi dan *f1-score* 1.00 untuk setiap kelas, sehingga bisa dianggap sebagai model terbaik dalam hal ini.
 
