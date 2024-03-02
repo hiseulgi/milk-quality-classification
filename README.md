@@ -166,12 +166,14 @@ Beberapa fitur dalam dataset, seperti **pH**, **Temperature**, dan **Colour**, m
 Metode yang digunakan untuk *outlier handling* adalah ***Interquartile Range (IQR)***. Metode *IQR (Interquartile Range)* digunakan untuk penanganan *outlier* karena metode ini menyediakan cara yang kuat dan efektif untuk mendeteksi dan menghapus *outlier* dari kumpulan data. Selain itu, metode ini juga mudah diinterpretasikan dan tidak memerlukan asumsi distribusi data [3]. 
 
 Berikut adalah rumus dari metode IQR:
-$$
-IQR = Q3 - Q1 \\
-Batas Bawah = Q1 - 1.5 \times IQR \\
-Batas Atas = Q3 + 1.5 \times IQR \\
-Outlier = Data < Batas Bawah \text{ or } Data > Batas Atas
-$$
+
+$IQR = Q3 - Q1$
+
+$Batas Bawah = Q1 - 1.5 \times IQR$
+
+$Batas Atas = Q3 + 1.5 \times IQR$
+
+$Outlier = Data < Batas Bawah \text{ or } Data > Batas Atas$
 
 Hasil dari *outlier handling* menunjukkan:
 - Data sebelum *outlier handling*: 1.059 baris
@@ -357,12 +359,13 @@ Secara umum, dari hasil *confusion matrix*, ***Decision Tree*** adalah model yan
 
 ***Classification report*** adalah laporan yang digunakan untuk mengevaluasi kinerja dari suatu model *machine learning* terutama pada task klasifikasi. *Classification report* menunjukkan beberapa *metrics performance* seperti *accuracy*, *precision*, *recall*, dan *F1-score*. Berikut adalah persamaan dan penjelasan dari masing-masing *metrics performance*:
 
-$$
-Accuracy = \frac{TP + TN}{TP + TN + FP + FN} \\
-Precision = \frac{TP}{TP + FP} \\
-Recall = \frac{TP}{TP + FN} \\
-\text{F1-Score} = 2 \times \frac{Precision \times Recall}{Precision + Recall}
-$$
+$Accuracy = \frac{TP + TN}{TP + TN + FP + FN}$
+
+$Precision = \frac{TP}{TP + FP}$
+
+$Recall = \frac{TP}{TP + FN}$
+
+$\text{F1-Score} = 2 \times \frac{Precision \times Recall}{Precision + Recall}$
 
 1. ***Accuracy***: Rasio prediksi benar dari keseluruhan prediksi yang dilakukan oleh model.
 2. ***Precision***: Rasio prediksi benar positif dibandingkan dengan keseluruhan prediksi positif yang dilakukan oleh model.
