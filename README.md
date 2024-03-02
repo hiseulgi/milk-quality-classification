@@ -355,17 +355,19 @@ Secara umum, dari hasil *confusion matrix*, ***Decision Tree*** adalah model yan
 
 ### *Classification Report*
 
-***Classification report*** adalah laporan yang digunakan untuk mengevaluasi kinerja dari suatu model *machine learning* terutama pada task klasifikasi. *Classification report* menunjukkan beberapa *metrics performance* seperti *accuracy*, *precision*, *recall*, dan *F1-score*. Berikut adalah penjelasan dari masing-masing *metrics performance*:
+***Classification report*** adalah laporan yang digunakan untuk mengevaluasi kinerja dari suatu model *machine learning* terutama pada task klasifikasi. *Classification report* menunjukkan beberapa *metrics performance* seperti *accuracy*, *precision*, *recall*, dan *F1-score*. Berikut adalah persamaan dan penjelasan dari masing-masing *metrics performance*:
+
+$$
+Accuracy = \frac{TP + TN}{TP + TN + FP + FN} \\
+Precision = \frac{TP}{TP + FP} \\
+Recall = \frac{TP}{TP + FN} \\
+\text{F1-Score} = 2 \times \frac{Precision \times Recall}{Precision + Recall}
+$$
+
 1. ***Accuracy***: Rasio prediksi benar dari keseluruhan prediksi yang dilakukan oleh model.
 2. ***Precision***: Rasio prediksi benar positif dibandingkan dengan keseluruhan prediksi positif yang dilakukan oleh model.
 3. ***Recall***: Rasio prediksi benar positif dibandingkan dengan keseluruhan data yang benar positif.
 4. ***F1-Score***: Rata-rata harmonik dari *precision* dan *recall*.
-
-![Rumus Metrics Performance](https://github.com/hiseulgi/milk-quality-classification/assets/73764468/522fa9fa-6f86-4010-bc91-4a04b9564fb5)
-<!--![Rumus Metrics Performance](assets/03_02.webp)-->
-
-Gambar 10. Rumus *Metrics Performance*
-<br>
 
 Beriikut adalah hasil dari *classification report* untuk model yang telah dibangun:
 ```
