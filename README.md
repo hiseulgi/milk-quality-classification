@@ -1,8 +1,8 @@
-# Laporan Proyek *machine learning* - Muhammad Bagus Adi Prayoga
+# Laporan Proyek *Machine Learning* - Muhammad Bagus Adi Prayoga
 
 ## Daftar Isi
 
-- [Laporan Proyek *machine learning* - Muhammad Bagus Adi Prayoga](#laporan-proyek-machine-learning---muhammad-bagus-adi-prayoga)
+- [Laporan Proyek *Machine Learning* - Muhammad Bagus Adi Prayoga](#laporan-proyek-machine-learning---muhammad-bagus-adi-prayoga)
   - [Daftar Isi](#daftar-isi)
   - [Domain Proyek](#domain-proyek)
   - [Business Understanding](#business-understanding)
