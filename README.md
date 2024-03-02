@@ -5,11 +5,11 @@
 - [Laporan Proyek *Machine Learning* - Muhammad Bagus Adi Prayoga](#laporan-proyek-machine-learning---muhammad-bagus-adi-prayoga)
   - [Daftar Isi](#daftar-isi)
   - [Domain Proyek](#domain-proyek)
-  - [Business Understanding](#business-understanding)
-    - [Problem Statements](#problem-statements)
-    - [Goals](#goals)
-    - [Solution Statements](#solution-statements)
-  - [Data Understanding](#data-understanding)
+  - [*Business Understanding*](#business-understanding)
+    - [*Problem Statements*](#problem-statements)
+    - [*Goals*](#goals)
+    - [*Solution Statements*](#solution-statements)
+  - [*Data Understanding*](#data-understanding)
     - [*Descriptive Statistics*](#descriptive-statistics)
     - [*EDA: Uni-Variate Analysis*](#eda-uni-variate-analysis)
     - [*EDA: Multi-Variate Analysis*](#eda-multi-variate-analysis)
@@ -23,7 +23,7 @@
     - [*K-Nearest Neighbor*](#k-nearest-neighbor)
     - [*Voting Classifier*](#voting-classifier)
     - [Perbandingan Akurasi](#perbandingan-akurasi)
-  - [Evaluation](#evaluation)
+  - [*Evaluation*](#evaluation)
     - [*Cross Validation*](#cross-validation)
     - [*Confusion Matrix*](#confusion-matrix)
     - [*Classification Report*](#classification-report)
@@ -40,9 +40,9 @@ Klasifikasi kualitas susu sapi secara objektif dan konsisten merupakan langkah p
 Solusi yang diusulkan untuk meningkatkan klasifikasi kualitas susu sapi adalah dengan mengadopsi teknik analitik prediktif, khususnya menggunakan *machine learning*. Dengan memanfaatkan data tentang karakteristik susu, seperti pH, suhu, dan warna, model *machine learning* dapat menghasilkan penilaian kualitas yang lebih objektif dan konsisten. Pendekatan ini diharapkan dapat meningkatkan akurasi dalam penilaian kualitas susu sapi, serta membantu perusahaan dalam meningkatkan efisiensi proses evaluasi mereka.
 
 
-## Business Understanding
+## *Business Understanding*
 
-### Problem Statements
+### *Problem Statements*
 
 Berdasarkan pemahaman atas domain proyek yang telah diuraikan sebelumnya, berikut adalah *problem statements* yang teridentifikasi:
 - Fitur-fitur apa saja yang paling berpengaruh dalam menentukan kualitas susu sapi?
@@ -50,7 +50,7 @@ Berdasarkan pemahaman atas domain proyek yang telah diuraikan sebelumnya, beriku
 - Bagaimana merancang dan mengembangkan model *machine learning* yang mampu mengklasifikasikan kualitas susu sapi secara efektif?
 - Bagaimana cara yang tepat untuk mengevaluasi kinerja model *machine learning* yang telah dibangun dalam mengklasifikasikan kualitas susu sapi?
 
-### Goals
+### *Goals*
 
 Berdasarkan *problem statements* yang telah diidentifikasi sebelumnya, berikut adalah beberapa *goals* dari proyek ini:
 - Mengetahui fitur-fitur yang paling berpengaruh dalam menentukan kualitas susu sapi.
@@ -58,7 +58,7 @@ Berdasarkan *problem statements* yang telah diidentifikasi sebelumnya, berikut a
 - Membangun model *machine learning* yang mampu mengklasifikasikan kualitas susu sapi dengan tingkat akurasi minimal 90% dan *F1-score* minimal 90%.
 - Melakukan evaluasi menyeluruh terhadap kinerja model *machine learning* yang telah dibangun untuk menentukan model terbaik yang memenuhi standar performa yang ditetapkan.
 
-### Solution Statements
+### *Solution Statements*
 
 Berdasarkan *goals* di atas, maka diperoleh beberapa *solution statement* untuk menyelesaikan masalah tersebut, yaitu:
 - Melakukan eksplorasi data untuk mengetahui fitur-fitur yang paling berpengaruh dalam menentukan kualitas susu sapi.
@@ -70,7 +70,7 @@ Berdasarkan *goals* di atas, maka diperoleh beberapa *solution statement* untuk 
 - Melakukan evaluasi terhadap setiap model menggunakan teknik *cross validation*, *confusion matrix*, serta berbagai *metrics performance* seperti akurasi, presisi, *recall*, dan *F1-Score* untuk menilai kinerja dan kemampuan prediktifnya secara menyeluruh.
 
 
-## Data Understanding
+## *Data Understanding*
 
 Datasets yang digunakan pada kasus ini adalah datasets yang dikumpulkan secara manual melalui pengamatan yang bersumber dari [Kaggle - Milk Quality Prediction](https://www.kaggle.com/datasets/cpluzshrijayan/milkquality). Datasets ini berisi 1,059 baris dan 8 kolom, berikut adalah deskripsi dari masing-masing kolomnya:
 - ***pH:*** Tingkat keasaman susu (ideal: 6.25 - 6.90).
@@ -294,7 +294,7 @@ Tabel 3. Perbandingan Performa Model
 
 Dari hasil perbandingan performa di atas, dapat disimpulkan bahwa model ***Decision Tree*** memiliki performa terbaik dengan akurasi 100%, baik pada data *train* maupun data *test*. Akan tetapi, model ini memiliki kecenderungan untuk *overfitting*. Oleh karena itu, perlu dilakukan evaluasi lebih lanjut pada semua model yang telah dibangun.
 
-## Evaluation
+## *Evaluation*
 
 ### *Cross Validation*
 
