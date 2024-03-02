@@ -1,10 +1,8 @@
-# Laporan Proyek Machine Learning - Muhammad Bagus Adi Prayoga
-
-Project ini merupakan bagian dari Proyek Pertama pada Machine Learning Terapan oleh Dicoding. Pada proyek ini, saya mengangkat topik "Klasifikasi Kualitas Susu Sapi dengan Machine Learning". Tujuan dari proyek ini adalah untuk mengembangkan model machine learning yang mampu mengklasifikasikan kualitas susu sapi berdasarkan karakteristiknya.
+# Laporan Proyek *machine learning* - Muhammad Bagus Adi Prayoga
 
 ## Daftar Isi
 
-- [Laporan Proyek Machine Learning - Muhammad Bagus Adi Prayoga](#laporan-proyek-machine-learning---muhammad-bagus-adi-prayoga)
+- [Laporan Proyek *machine learning* - Muhammad Bagus Adi Prayoga](#laporan-proyek-machine-learning---muhammad-bagus-adi-prayoga)
   - [Daftar Isi](#daftar-isi)
   - [Domain Proyek](#domain-proyek)
   - [Business Understanding](#business-understanding)
@@ -12,73 +10,79 @@ Project ini merupakan bagian dari Proyek Pertama pada Machine Learning Terapan o
     - [Goals](#goals)
     - [Solution Statements](#solution-statements)
   - [Data Understanding](#data-understanding)
-    - [Descriptive Statistics](#descriptive-statistics)
-    - [EDA: Uni-Variate Analysis](#eda-uni-variate-analysis)
-    - [EDA: Multi-Variate Analysis](#eda-multi-variate-analysis)
-  - [Data Preparation](#data-preparation)
-    - [Outlier Handling](#outlier-handling)
-    - [Splitting Data](#splitting-data)
-    - [Feature Scaling (Standardization)](#feature-scaling-standardization)
-  - [Modeling](#modeling)
+    - [*Descriptive Statistics*](#descriptive-statistics)
+    - [*EDA: Uni-Variate Analysis*](#eda-uni-variate-analysis)
+    - [*EDA: Multi-Variate Analysis*](#eda-multi-variate-analysis)
+  - [*Data Preparation*](#data-preparation)
+    - [*Outlier Handling*](#outlier-handling)
+    - [*Splitting Data*](#splitting-data)
+    - [*Feature Scaling (Standardization)*](#feature-scaling-standardization)
+  - [*Modeling*](#modeling)
+    - [***Decision Tree Classifier***](#decision-tree-classifier)
+    - [***Support Vector Machine (SVM)***](#support-vector-machine-svm)
+    - [***K-Nearest Neighbor***](#k-nearest-neighbor)
+    - [*Voting Classifier*](#voting-classifier)
+    - [Perbandingan Akurasi](#perbandingan-akurasi)
   - [Evaluation](#evaluation)
-    - [Cross Validation](#cross-validation)
-    - [Confusion Matrix](#confusion-matrix)
-    - [Classification Report](#classification-report)
+    - [*Cross Validation*](#cross-validation)
+    - [*Confusion Matrix*](#confusion-matrix)
+    - [*Classification Report*](#classification-report)
     - [Kesimpulan Evaluasi](#kesimpulan-evaluasi)
-  - [Acknowledgement](#acknowledgement)
+  - [Referensi](#referensi)
 
 
 ## Domain Proyek
 
-Susu sapi adalah komponen penting dalam rantai pangan manusia. Memastikan kualitas susu yang tinggi adalah suatu keharusan untuk memenuhi standar keamanan dan gizi yang diharapkan oleh konsumen. Standar kualitas yang ketat diterapkan dalam industri susu untuk memastikan produk yang dihasilkan memenuhi persyaratan yang ditetapkan.
+Industri susu memainkan peran penting dalam menyediakan sumber nutrisi yang kaya bagi manusia. Susu sapi merupakan bahan baku utama dalam berbagai produk makanan dan minuman, dan kualitasnya sangat penting untuk memastikan keamanan dan gizi bagi konsumen. Standar kualitas yang ketat diterapkan dalam industri susu untuk memenuhi kebutuhan ini.
 
-Namun, kualitas susu dapat bervariasi dipengaruhi oleh sejumlah faktor, termasuk kesehatan sapi, kondisi lingkungan, dan proses produksi. Variabilitas ini dapat menyebabkan fluktuasi dalam kualitas susu, dan dalam beberapa kasus, produk mungkin tidak memenuhi standar yang diinginkan.
+Klasifikasi kualitas susu sapi secara objektif dan konsisten merupakan langkah penting bagi perusahaan susu. Hal ini memberikan kepercayaan kepada konsumen bahwa produk yang mereka konsumsi aman dan berkualitas. Kualitas susu yang baik juga berdampak langsung pada nilai ekonominya di pasar, menghasilkan harga yang lebih tinggi dan meningkatkan daya jual [1]. Selain itu, kualitas susu mentah yang terjaga penting untuk menghasilkan produk susu akhir yang berkualitas tinggi [2].
 
-Pengklasifikasian kualitas susu sapi saat ini umumnya masih bergantung pada metode organoleptik (penilaian melalui indra manusia seperti bau, rasa, dan warna). Metode ini cenderung subjektif dan tidak konsisten, menyebabkan penilaian kualitas yang kurang akurat.
-
-Penggunaan teknik analitik prediktif, seperti Machine Learning, dapat menjadi solusi untuk mengklasifikasikan kualitas susu sapi secara lebih objektif dan konsisten. Model Machine Learning dapat menentukan kualitas susu berdasarkan karakteristiknya, seperti pH, suhu, warna, dan lain sebagainya. Pendekatan ini diharapkan dapat meningkatkan konsistensi dan akurasi dalam penilaian kualitas susu sapi, serta membantu dalam meningkatkan efisiensi proses evaluasi.
+Solusi yang diusulkan untuk meningkatkan klasifikasi kualitas susu sapi adalah dengan mengadopsi teknik analitik prediktif, khususnya menggunakan *machine learning*. Dengan memanfaatkan data tentang karakteristik susu, seperti pH, suhu, dan warna, model *machine learning* dapat menghasilkan penilaian kualitas yang lebih objektif dan konsisten. Pendekatan ini diharapkan dapat meningkatkan akurasi dalam penilaian kualitas susu sapi, serta membantu perusahaan dalam meningkatkan efisiensi proses evaluasi mereka.
 
 
 ## Business Understanding
 
 ### Problem Statements
 
-Berdasarkan pemahaman atas domain proyek yang telah diuraikan sebelumnya, berikut adalah problem statements yang teridentifikasi:
-- Bagaimana langkah-langkah pre-processing data yang optimal dalam pengembangan model Machine Learning untuk melakukan klasifikasi kualitas susu sapi?
-- Bagaimana kita dapat merancang dan mengembangkan model Machine Learning yang mampu mengklasifikasikan kualitas susu sapi secara efektif?
-- Bagaimana cara yang tepat untuk mengevaluasi kinerja model Machine Learning yang telah dibangun dalam mengklasifikasikan kualitas susu sapi?
+Berdasarkan pemahaman atas domain proyek yang telah diuraikan sebelumnya, berikut adalah *problem statements* yang teridentifikasi:
+- Fitur-fitur apa saja yang paling berpengaruh dalam menentukan kualitas susu sapi?
+- Bagaimana langkah-langkah *pre-processing* data yang optimal dalam pengembangan model *machine learning* untuk melakukan klasifikasi kualitas susu sapi?
+- Bagaimana merancang dan mengembangkan model *machine learning* yang mampu mengklasifikasikan kualitas susu sapi secara efektif?
+- Bagaimana cara yang tepat untuk mengevaluasi kinerja model *machine learning* yang telah dibangun dalam mengklasifikasikan kualitas susu sapi?
 
 ### Goals
 
-Berdasarkan problem statements yang telah diidentifikasi sebelumnya, berikut adalah beberapa goals dari proyek ini:
-- Mengembangkan alur pre-processing data yang efisien dan efektif untuk mempersiapkan data masukan bagi model Machine Learning guna klasifikasi kualitas susu sapi.
-- Membangun model Machine Learning yang mampu mengklasifikasikan kualitas susu sapi dengan tingkat akurasi minimal 90% dan F1-score minimal 0.9.
-- Melakukan evaluasi menyeluruh terhadap kinerja model Machine Learning yang telah dibangun untuk menentukan model terbaik yang memenuhi standar performa yang ditetapkan.
+Berdasarkan *problem statements* yang telah diidentifikasi sebelumnya, berikut adalah beberapa *goals* dari proyek ini:
+- Mengetahui fitur-fitur yang paling berpengaruh dalam menentukan kualitas susu sapi.
+- Mengembangkan alur *pre-processing* data yang efisien dan efektif untuk mempersiapkan data masukan bagi model *machine learning* guna klasifikasi kualitas susu sapi.
+- Membangun model *machine learning* yang mampu mengklasifikasikan kualitas susu sapi dengan tingkat akurasi minimal 90% dan *F1-score* minimal 90%.
+- Melakukan evaluasi menyeluruh terhadap kinerja model *machine learning* yang telah dibangun untuk menentukan model terbaik yang memenuhi standar performa yang ditetapkan.
 
 ### Solution Statements
 
-Berdasarkan goals di atas, maka diperoleh beberapa solution statement untuk menyelesaikan masalah tersebut, yaitu:
-- Melakukan persiapan data untuk memastikan kesiapan dalam penggunaan dalam pembuatan model machine learning. Ini mencakup beberapa tahapan seperti penanganan missing value, outliers, feature engineering, pemisahan data, serta standarisasi.
-- Mengembangkan model machine learning yang efektif dengan langkah-langkah berikut:
-	- Membandingkan baseline model menggunakan library LazyPredict dan mengevaluasi kinerjanya.
-	- Memilih tiga model machine learning dengan akurasi dan F1-score tertinggi dari hasil evaluasi.
-	- Membangun model Voting Classifier yang menggabungkan tiga baseline model terbaik sebelumnya.
-- Melakukan evaluasi terhadap setiap model menggunakan teknik cross validation, confusion matrix, serta berbagai metrics performance seperti akurasi, presisi, recall, dan F1-Score untuk menilai kinerja dan kemampuan prediktifnya secara menyeluruh.
+Berdasarkan *goals* di atas, maka diperoleh beberapa *solution statement* untuk menyelesaikan masalah tersebut, yaitu:
+- Melakukan eksplorasi data untuk mengetahui fitur-fitur yang paling berpengaruh dalam menentukan kualitas susu sapi.
+- Melakukan persiapan data untuk memastikan kesiapan dalam penggunaan dalam pembuatan model *machine learning*. Ini mencakup beberapa tahapan seperti *missing value handling*, *outliers handling*, *feature engineering*, *data splitting*, serta standarisasi.
+- Mengembangkan model *machine learning* yang efektif dengan langkah-langkah berikut:
+	- Membandingkan *baseline model* menggunakan *library* *LazyPredict* dan mengevaluasi kinerjanya.
+	- Memilih tiga model *machine learning* dengan akurasi dan *F1-score* tertinggi dari hasil evaluasi serta mempertimbangkan kelebihan dan kekurangan model masing-masing.
+	- Membangun model *Voting Classifier* yang menggabungkan tiga *baseline model* terbaik sebelumnya dengan tujuan untuk menggeneralisasi hasil prediksi yang lebih baik.
+- Melakukan evaluasi terhadap setiap model menggunakan teknik *cross validation*, *confusion matrix*, serta berbagai *metrics performance* seperti akurasi, presisi, *recall*, dan *F1-Score* untuk menilai kinerja dan kemampuan prediktifnya secara menyeluruh.
 
 
 ## Data Understanding
 
-Datasets yang digunakan pada kasus ini adalah dataset yang dikumpulkan secara manual melalui pengamatan yang bersumber dari [Kaggle - Milk Quality Prediction](https://www.kaggle.com/datasets/cpluzshrijayan/milkquality). Datasets ini berisi 1,059 baris dan 8 kolom, berikut adalah deskripsi dari masing-masing kolomnya:
-- **pH:** Tingkat keasaman susu (ideal: 6.25 - 6.90).
-- **Temperature:** Suhu susu (ideal: 34°C - 45.20°C).
-- **Taste:** Rasa susu (0: Buruk, 1: Baik).
-- **Odor:** Bau susu (0: Buruk, 1: Baik).
-- **Fat:** Kandungan lemak dalam susu (0: Rendah, 1: Tinggi).
-- **Turbidity:** Tingkat kekeruhan susu (0: Rendah, 1: Tinggi).
-- **Colour:** Warna susu (kisaran: 240 - 255).
-- **Grade (Target Variable):** Kualitas susu ("Low" - Buruk, "Medium" - Sedang, "High" - Baik).
+Datasets yang digunakan pada kasus ini adalah datasets yang dikumpulkan secara manual melalui pengamatan yang bersumber dari [Kaggle - Milk Quality Prediction](https://www.kaggle.com/datasets/cpluzshrijayan/milkquality). Datasets ini berisi 1,059 baris dan 8 kolom, berikut adalah deskripsi dari masing-masing kolomnya:
+- ***pH:*** Tingkat keasaman susu (ideal: 6.25 - 6.90).
+- ***Temperature:*** Suhu susu (ideal: 34°C - 45.20°C).
+- ***Taste:*** Rasa susu (0: Buruk, 1: Baik).
+- ***Odor:*** Bau susu (0: Buruk, 1: Baik).
+- ***Fat:*** Kandungan lemak dalam susu (0: Rendah, 1: Tinggi).
+- ***Turbidity:*** Tingkat kekeruhan susu (0: Rendah, 1: Tinggi).
+- ***Colour:*** Warna susu (kisaran: 240 - 255).
+- ***Grade (Target Variable):*** Kualitas susu (*"Low"* - Buruk, *"Medium"* - Sedang, *"High"* - Baik).
 
-### Descriptive Statistics
+### *Descriptive Statistics*
 
 Tabel 1. Deskripsi Statistik Data
 
@@ -93,13 +97,13 @@ Tabel 1. Deskripsi Statistik Data
 | 75%   |    6.8     |       45      |    1        |    1        |    1        |    1        |  255       |
 | max   |    9.5     |       90      |    1        |    1        |    1        |    1        |  255       |
 
-Beberapa informasi yang dapat diambil dari descriptive statistics diatas adalah:
-- Datasets ini terdiri dari 1,059 baris dan 8 kolom
-- Tidak ada missing values pada datasets ini
-- Ada indikasi outlier pada kolom pH dan Temperature
+Beberapa informasi yang dapat diambil dari *descriptive statistics* diatas adalah:
+- Datasets ini terdiri dari 1,059 baris dan 8 kolom.
+- Tidak ada *missing values* pada datasets ini.
+- Ada indikasi *outlier* pada kolom ***pH*** dan ***Temperature***.
 - Mayoritas sampel memiliki rasa "Baik", bau "Buruk", kandungan lemak "Tinggi", tingkat kekeruhan "Rendah", dan kualitas "Rendah".
 
-### EDA: Uni-Variate Analysis
+### *EDA: Uni-Variate Analysis*
 
 ![Distribusi Label](assets/01_01.png)
 
@@ -121,96 +125,100 @@ Gambar 3. Histogram Fitur Numerik
 Gambar 4. Boxplot Fitur Numerik
 <br>
 
-Informasi yang didapatkan dari uni-variate analysis:
-- **Distribusi label yang tidak seimbang** dapat menghasilkan model yang memprediksi "Low" lebih sering, meskipun kualitas susu sebenarnya "Medium" atau "High".
-    - Salah satu solusi untuk hal ini jika dimungkinkan adalah dengan menggunakan teknik sampling seperti SMOTE
-    - Menggunakan model klasifikasi yang dapat bekerja pada distribusi data yang tidak seimbang seperti Random Forest atau SVM
-- Distribusi fitur kategorikal sudah cukup bagus, namun pada fitur Fat terdapar perbedaan jumlah yang sangat banyak
-- **Terdapat outlier pada semua fitur numerical**, sehingga perlu dilakukan outlier handling
+Informasi yang didapatkan dari *uni-variate analysis*:
+- **Distribusi label yang tidak seimbang** dapat menghasilkan model yang memprediksi *"Low"* lebih sering, meskipun kualitas susu sebenarnya *"Medium"* atau *"High"*.
+    - Salah satu solusi untuk hal ini jika dimungkinkan adalah dengan menggunakan teknik *sampling* seperti *SMOTE*.
+    - Atau menggunakan model klasifikasi yang dapat bekerja pada distribusi data yang tidak seimbang seperti *Random Forest* atau *SVM*.
+- Distribusi fitur kategorikal sudah cukup bagus, namun pada fitur ***Fat*** terdapar perbedaan jumlah yang sangat banyak.
+- **Terdapat outlier pada semua fitur numerical**, sehingga perlu dilakukan **outlier handling**.
 
-### EDA: Multi-Variate Analysis
+### *EDA: Multi-Variate Analysis*
 
-Sebelum melakukan multi-variate analysis, dilakukan label encoding pada kolom **Grade** dengan menggunakan metode ordinal encoding. Hasil dari label encoding menunjukkan:
-- "Low" = 0
-- "Medium" = 1
-- "High" = 2
+Sebelum melakukan *multi-variate analysis*, dilakukan *label encoding* pada kolom ***Grade*** dengan menggunakan metode *ordinal encoding*. Alasan menggunakan *ordinal encoding* adalah karena kolom ***Grade*** merupakan kolom target yang memiliki tingkatan kualitas, yaitu:
+- *"Low"* = 0
+- *"Medium"* = 1
+- *"High"* = 2
 
-Selanjutnya, dilakukan visualisasi heatmap korelasi antar fitur. Hasil dari visualisasi heatmap korelasi menunjukkan:
+Selanjutnya, dilakukan visualisasi *heatmap* korelasi antar fitur. Hasil dari visualisasi *heatmap* korelasi menunjukkan:
 
 ![Heatmap Korelasi](assets/01_05.png)
 
-Gambar 5. Heatmap Korelasi
+Gambar 5. *Heatmap* Korelasi
 <br>
 
 Informasi yang didapatkan dari multivariate analysis:
-- Kolom **Grade** memiliki **korelasi positif** yang kecil dengan kolom **Odor** dan **Fat**
-- Kolom **Grade** memiliki **korelasi negatif** yang kecil dengan kolom **Turbidity**
-- Kolom **Grade** memiliki **korelasi negatif** yang sedang dengan kolom **Temperature**
+- Kolom ***Grade*** memiliki **korelasi positif** yang kecil dengan kolom **Odor** dan ***Fat***.
+- Kolom ***Grade*** memiliki **korelasi negatif** yang kecil dengan kolom ***Turbidity***.
+- Kolom ***Grade*** memiliki **korelasi negatif** yang sedang dengan kolom ***Temperature***.
 
 
-## Data Preparation
+## *Data Preparation*
 
-### Outlier Handling
+### *Outlier Handling*
 
-Beberapa fitur dalam dataset, seperti **pH**, **Temperature**, dan **Colour**, memiliki outlier. Outlier adalah data yang nilainya jauh dari nilai mayoritas data. Outlier dapat menyebabkan model machine learning menjadi tidak akurat.
+Beberapa fitur dalam dataset, seperti **pH**, **Temperature**, dan **Colour**, memiliki *outlier*. *Outlier* adalah data yang nilainya jauh dari nilai mayoritas data. *Outlier* dapat menyebabkan model *machine learning* menjadi tidak akurat. Oleh karena itu, *outlier handling* dilakukan untuk menghilangkan *outlier* dari dataset. 
 
-Oleh karena itu, outlier handling dilakukan untuk menghilangkan outlier dari dataset. Outlier handling dilakukan dengan menggunakan **metode IQR (Interquartile Range)**.
+Metode yang digunakan untuk *outlier handling* adalah ***Interquartile Range (IQR)***. Metode *IQR (Interquartile Range)* digunakan untuk penanganan *outlier* karena metode ini menyediakan cara yang kuat dan efektif untuk mendeteksi dan menghapus *outlier* dari kumpulan data. Selain itu, metode ini juga mudah diinterpretasikan dan tidak memerlukan asumsi distribusi data [3]. 
 
-Berikut adalah rumus IQR:
-- Q1: 25th percentile (nilai tengah 25% data terkecil)
-- Q3: 75th percentile (nilai tengah 25% data terbesar)
-- IQR: Q3 - Q1 (selisih antara Q3 dan Q1)
-- Lower Bound: Q1 - (1.5 * IQR) (batas bawah data normal)
-- Upper Bound: Q3 + (1.5 * IQR) (batas atas data normal)
-- Outlier: Data yang nilainya kurang dari Lower Bound atau lebih dari Upper Bound
+Berikut adalah rumus dari metode IQR:
+$$
+IQR = Q3 - Q1 \\
+Batas Bawah = Q1 - 1.5 \times IQR \\
+Batas Atas = Q3 + 1.5 \times IQR \\
+Outlier = Data < Batas Bawah \text{ or } Data > Batas Atas
+$$
 
-Hasil dari outlier handling menunjukkan:
-- Data sebelum outlier handling: 1.059 baris
-- Data setelah outlier handling: 648 baris
-- Total outlier yang dihilangkan: 411 baris
-- Rincian outlier yang dihilangkan:
+Hasil dari *outlier handling* menunjukkan:
+- Data sebelum *outlier handling*: 1.059 baris
+- Data setelah *outlier handling*: 648 baris
+- Total *outlier* yang dihilangkan: 411 baris
+- Rincian *outlier* yang dihilangkan:
   - pH: 379 baris
   - Temperatur: 103 baris
   - Warna: 32 baris
 
-Berikut adalah visualisasi data hasil setelah outlier handling:
-![Boxplot Fitur Numerik Setelah Outlier Handling](assets/02_01.png)
+Berikut adalah visualisasi data hasil setelah *outlier handling*:
+![Boxplot Fitur Numerik Setelah *Outlier Handling*](assets/02_01.png)
 
-Gambar 6. Boxplot Fitur Numerik Setelah Outlier Handling
+Gambar 6. Boxplot Fitur Numerik Setelah *Outlier Handling*
 <br>
 
-![Histogram Fitur Numerik Setelah Outlier Handling](assets/02_02.png)
+![Histogram Fitur Numerik Setelah *Outlier Handling*](assets/02_02.png)
 
-Gambar 7. Histogram Fitur Numerik Setelah Outlier Handling
+Gambar 7. Histogram Fitur Numerik Setelah *Outlier Handling*
 <br>
 
-![Heatmap Korelasi Setelah Outlier Handling](assets/02_03.png)
+![Heatmap Korelasi Setelah *Outlier Handling*](assets/02_03.png)
 
-Gambar 8. Heatmap Korelasi Setelah Outlier Handling
+Gambar 8. *Heatmap* Korelasi Setelah *Outlier Handling*
 <br>
 
-### Splitting Data
+Informasi yang didapatkan dari hasil *outlier handling*:
+- Setelah dilakukan *outlier handling*, distribusi data menjadi lebih baik dan tidak terdapat *outlier* pada fitur numerik.
+- Korelasi antar fitur mengalami perubahan yang signifikan setelah dilakukan *outlier handling*.
 
-Data yang sudah bersih kemudian di-split menjadi dua bagian, yaitu:
+### *Splitting Data*
+
+Data yang sudah bersih kemudian dipecah menjadi dua bagian, yaitu *training set* dan *testing set*. Berikut adalah rincian dari *splitting data*:
 - **Training Set**: 80% dari total data
 - **Testing Set**: 20% dari total data
 
-Tujuan dari splitting data adalah untuk mempersiapkan data yang akan digunakan untuk melatih model machine learning dan data yang akan digunakan untuk menguji model machine learning.
+Tujuan dari splitting data adalah untuk mempersiapkan data yang akan digunakan untuk melatih model *machine learning* dan data yang akan digunakan untuk menguji model *machine learning*.
 
-### Feature Scaling (Standardization)
+### *Feature Scaling (Standardization)*
 
-Feature scaling dilakukan untuk menstandarisasi nilai-nilai dari fitur-fitur numerik dalam dataset. Hal ini dilakukan untuk memastikan bahwa semua fitur memiliki skala yang sama. Metode yang digunakan adalah **StandardScaler**.
+*Feature scaling* dilakukan untuk menstandarisasi nilai-nilai dari fitur-fitur numerik dalam dataset. Hal ini dilakukan untuk memastikan bahwa semua fitur memiliki skala yang sama. Metode yang digunakan adalah ***StandardScaler***.
 
-StandardScaler mengubah distribusi data sehingga memiliki mean 0 dan standar deviasi 1. Hal ini dilakukan dengan mengurangi setiap nilai dengan mean dan kemudian membaginya dengan standar deviasi.
+***StandardScaler*** mengubah distribusi data sehingga memiliki rata-rata 0 dan standar deviasi 1. Hal ini dilakukan dengan mengurangi setiap nilai dengan rata-rata dan kemudian membaginya dengan standar deviasi.
 
-## Modeling
+## *Modeling*
 
 Proses pemodelan dibagi menjadi beberapa tahapan, yaitu:
-- **Baseline Model**: Melakukan pemodelan menggunakan beberapa algoritma machine learning dengan bantuan library LazyPredict.
-- **Model Selection**: Memilih tiga model machine learning dengan akurasi dan F1-score tertinggi dari hasil evaluasi.
-- **Model Development**: Membangun model Voting Classifier yang menggabungkan tiga baseline model terbaik sebelumnya.
+- ***Baseline Model***: Melakukan pemodelan menggunakan beberapa algoritma *machine learning* dengan bantuan *library LazyPredict*.
+- ***Model Selection***: Memilih tiga model *machine learning* dengan akurasi dan *F1-score* tertinggi dari hasil evaluasi.
+- ***Model Development***: Membangun model *Voting Classifier* yang menggabungkan tiga *baseline model* terbaik sebelumnya.
 
-Baseline model dibangun menggunakan library LazyPredict. Library ini digunakan untuk membandingkan performa dari berbagai algoritma machine learning dengan cepat. Baseline model yang akan dipilih adalah **model traditional machine learning**. Berikut adalah hasil dari baseline model:
+*Baseline model* dibangun menggunakan *library LazyPredict*. Library ini digunakan untuk membandingkan performa dari berbagai algoritma *machine learning* dengan cepat. *Baseline model* yang akan dipilih adalah **model traditional *machine learning***. Berikut adalah hasil dari perbandingan dengan menggunakan *library LazyPredict*:
 
 Tabel 2. Hasil Evaluasi Baseline Model
 | Model                         |   Accuracy |   Balanced Accuracy | ROC AUC   |   F1 Score |   Time Taken |
@@ -242,37 +250,30 @@ Tabel 2. Hasil Evaluasi Baseline Model
 | BernoulliNB                   |   0.784615 |            0.590572 |           |   0.776403 |    0.0185149 |
 | DummyClassifier               |   0.507692 |            0.333333 |           |   0.341915 |    0.0158775 |
 
-Selanjutnya, model selection dilakukan dengan memilih tiga traditional machine learning model dengan akurasi dan F1-score tertinggi. Tiga model yang dipilih adalah:
-  - **DecisionTreeClassifier**: Akurasi = 1.00, F1-Score = 1.00
-    - **Kelebihan**:
-      - **Interpretability**: Struktur pohon keputusan model ini mudah dipahami dan memungkinkan Anda untuk melacak bagaimana fitur memengaruhi prediksi akhir.
-      - **Cepat untuk dilatih**: Membutuhkan waktu training yang singkat dibandingkan dengan model lain.
-      - **Tidak memerlukan scaling data**: Model ini tidak terlalu sensitif terhadap scaling fitur.
-    - **Kekurangan**:
-      - **Overfitting**: Model ini dapat menghafal data training terlalu baik dan tidak dapat digeneralisasi dengan baik ke data baru.
-      - **Variansi tinggi**: Model ini rentan terhadap perubahan kecil dalam data training, yang dapat menyebabkan prediksi yang berbeda.
-      - **Biased learning**: Model ini dapat lebih condong ke fitur kategoris dengan banyak level dibandingkan fitur numerik atau kategoris dengan level sedikit.
-  - **SVC**: Akurasi = 0.99, F1-Score = 0.99
-    - **Kelebihan**:
-      - **Efektif untuk data dengan dimensi tinggi**: Model ini dapat bekerja dengan baik pada data dengan banyak fitur.
-      - **Kinerja yang baik pada data non-linear**: Model ini dapat menangani data yang memiliki hubungan non-linear antara fitur dan label.
-      - **Mencegah overfitting dengan margin classification**: Model ini secara eksplisit mencari hyperplane yang memisahkan kelas dengan margin terbesar, mengurangi overfitting.
-    - **Kekurangan**:
-      - **Kurang cocok untuk dataset besar**: Model ini memerlukan waktu training yang lama untuk dataset besar.
-      - **Sensitif terhadap noise**: Model ini dapat menghasilkan hasil yang buruk jika terdapat noise dalam data.
-  - **KNeighborsClassifier**: Akurasi = 0.99, F1-Score = 0.99
-    - **Kelebihan**:
-      - **Sederhana**: Model ini mudah dipahami dan diimplementasikan.
-      - **Non-parametrik**: Model ini tidak membuat asumsi tentang distribusi data, sehingga dapat bekerja dengan baik pada data yang tidak terdistribusi normal.
-      - **Tidak memerlukan training**: Model ini tidak memerlukan waktu training, sehingga dapat digunakan langsung setelah data di-load.
-    - **Kekurangan**:
-      - **Curse of Dimensionality**: Model ini tidak bekerja dengan baik pada data dengan dimensi tinggi karena jarak antar titik data menjadi tidak bermakna.
-      - **Sensitif terhadap imbalanced data**: Model ini dapat menghasilkan hasil yang buruk jika terdapat ketidakseimbangan kelas dalam data.
-      - **Sensitif terhadap outliers**: Outlier dalam data training dapat mempengaruhi prediksi KNN secara signifikan.
+Selanjutnya, *model selection* dilakukan dengan memilih tiga *traditional machine learning* model dengan akurasi dan *F1-score* tertinggi.
 
-Dengan mempertimbangkan kelebihan dan kekurangan dari masing-masing model, maka akan dikembangkan model **Voting Classifier** yang menggabungkan tiga model machine learning terbaik sebelumnya. Voting Classifier adalah model **ensemble yang menggabungkan beberapa model machine learning** dan menggunakan hasil mayoritas dari model-model tersebut. 
 
-Berikut adalah perbandingan performa dari tiga model machine learning terbaik dan model Voting Classifier:
+### ***Decision Tree Classifier***
+
+*Decision Tree Classifier* merupakan model yang memiliki struktur pohon keputusan mudah dipahami, memungkinkan pelacakan pengaruh fitur terhadap prediksi akhir. Model ini cepat dilatih dan tidak memerlukan scaling data. Kelemahannya, *Decision Tree Classifier* rentan terhadap *overfitting*, memiliki variansi tinggi, dan bias terhadap fitur kategoris dengan banyak level [4].
+
+### ***Support Vector Machine (SVM)***
+
+*Support Vector Machine (SVM)* merupakan model yang efektif untuk data dengan dimensi tinggi dan mampu menangani hubungan *non-linear* antara fitur dan label. Model ini mencegah *overfitting* dengan *margin classification*, mencari *hyperplane* dengan margin terbesar untuk memisahkan kelas. Kelemahan *SVM* adalah waktu pelatihan yang lama untuk dataset besar dan sensitivitas terhadap *noise* dalam data [5].
+
+### ***K-Nearest Neighbor***
+
+*K-Nearest Neighbor (KNN)* merupakan model sederhana dan mudah diimplementasikan yang tidak membuat asumsi tentang distribusi data, sehingga cocok untuk data non-normal. Kelebihan *KNN* lainnya adalah tidak memerlukan waktu pelatihan dan dapat langsung digunakan. Kelemahan *KNN* adalah kinerjanya yang menurun pada data dimensi tinggi (*curse of dimensionality*), sensitivitas terhadap data imbang (*imbalanced data*), dan *outlier* yang dapat mempengaruhi prediksi secara signifikan [6].
+
+### *Voting Classifier*
+
+Dengan mempertimbangkan kelebihan dan kekurangan dari masing-masing model, maka akan dikembangkan model ***Voting Classifier*** yang menggabungkan tiga model *machine learning* terbaik sebelumnya.  
+
+*Voting Classifier* menawarkan solusi untuk meningkatkan akurasi dan meminimalisasi *overfitting* melalui kombinasi hasil dari beberapa model berbeda [6]. Kelebihannya terletak pada kemudahan implementasi dan pemahaman. Namun, kompleksitas dan waktu training yang lebih tinggi dibandingkan model tunggal menjadi pertimbangan penting. Selain itu, *Voting Classifier* memiliki tingkat interpretabilitas yang lebih rendah karena menggabungkan beberapa model.
+
+### Perbandingan Akurasi
+
+Berikut adalah perbandingan performa dari tiga model *machine learning* terbaik dan model *Voting Classifier*:
 
 Tabel 3. Perbandingan Performa Model
 |              |   Score Train |   Score Test |
@@ -282,19 +283,17 @@ Tabel 3. Perbandingan Performa Model
 | KNN          |      0.994208 |     0.992308 |
 | Voting       |      0.998069 |     0.992308 |
 
-Dari hasil perbandingan performa di atas, dapat disimpulkan bahwa model **DecisionTree** memiliki performa terbaik dengan akurasi 100% dan F1-Score 100%. Akan tetapi, model ini memiliki kecenderungan untuk overfitting. Oleh karena itu, perlu dilakukan evaluasi lebih lanjut pada semua model yang telah dibangun.
+Dari hasil perbandingan performa di atas, dapat disimpulkan bahwa model ***Decision Tree*** memiliki performa terbaik dengan akurasi 100%, baik pada data *train* maupun data *test*. Akan tetapi, model ini memiliki kecenderungan untuk *overfitting*. Oleh karena itu, perlu dilakukan evaluasi lebih lanjut pada semua model yang telah dibangun.
 
 ## Evaluation
 
-Evaluasi model dilakukan dengan menggunakan teknik **cross validation**, **confusion matrix**, dan **classification report** (accuracy, precision, recall, F1-score). 
+### *Cross Validation*
 
-### Cross Validation
+***Cross-validation (CV)*** adalah metode statistik yang dapat digunakan untuk mengevaluasi kinerja model atau algoritma dimana data dipisahkan menjadi dua subset yaitu *training data* dan *validation data*. Model atau algoritma dilatih oleh *subset training* dan divalidasi oleh *subset validation*.
 
-**Cross-validation (CV)** adalah metode statistik yang dapat digunakan untuk mengevaluasi kinerja model atau algoritma dimana data dipisahkan menjadi dua subset yaitu training data dan validation data. Model atau algoritma dilatih oleh subset training dan divalidasi oleh subset validation.
+*Cross validation* digunakan untuk menghindari *overfitting* dan *underfitting* pada model. *Cross validation* juga dapat digunakan untuk memilih model yang paling baik untuk digunakan pada dataset yang diberikan.
 
-Cross validation digunakan untuk menghindari overfitting dan underfitting pada model. Cross validation juga dapat digunakan untuk memilih model yang paling baik untuk digunakan pada dataset yang diberikan.
-
-Tabel 4. Hasil Cross Validation
+Tabel 4. Hasil *Cross Validation*
 |              |   Score Train |   Score Test |   CV Mean |    CV Std |
 |:-------------|--------------:|-------------:|----------:|----------:|
 | SVC          |      0.996139 |     0.992308 |  0.990309 | 0.0129574 |
@@ -302,22 +301,24 @@ Tabel 4. Hasil Cross Validation
 | KNN          |      0.994208 |     0.992308 |  0.986501 | 0.0150346 |
 | Voting       |      0.998069 |     0.992308 |  0.992232 | 0.0128252 |
 
-### Confusion Matrix
+Hasil *cross validation* menunjukkan performa ***Decision Tree*** yang sangat baik. Model ini mencapai skor sempurna pada data *training* dan *testing*, serta nilai rata-rata *cross validation* yang tinggi. Di sisi lain, model *Voting Classifier* juga menunjukkan performa kuat dan stabil pada semua metrik evaluasi.
 
-**Confusion matrix** adalah tabel yang digunakan untuk mengevaluasi kinerja dari suatu model machine learning terutama pada task klasifikasi. Confusion matrix menunjukkan jumlah prediksi yang benar dan yang salah yang dibagi berdasarkan kelas target.
+### *Confusion Matrix*
+
+***Confusion matrix*** adalah tabel yang digunakan untuk mengevaluasi kinerja dari suatu model *machine learning* terutama pada task klasifikasi. *Confusion matrix* menunjukkan jumlah prediksi yang benar dan yang salah yang dibagi berdasarkan kelas target.
 
 ![Confusion Matrix](assets/03_01.jpg)
 
-Gambar 9. Confusion Matrix
+Gambar 9. Penjelasan *Confusion Matrix*
 <br>
 
 Keterangan:
-- **True Positive (TP)**: Prediksi positif yang benar
-- **True Negative (TN)**: Prediksi negatif yang benar
-- **False Positive (FP)**: Prediksi positif yang salah
-- **False Negative (FN)**: Prediksi negatif yang salah
+- ***True Positive (TP)***: Prediksi positif yang benar
+- ***True Negative (TN)***: Prediksi negatif yang benar
+- ***False Positive (FP)***: Prediksi positif yang salah
+- ***False Negative (FN)***: Prediksi negatif yang salah
 
-Beriikut adalah hasil dari confusion matrix untuk model yang telah dibangun:
+Beriikut adalah hasil dari *confusion matrix* untuk model yang telah dibangun:
 ```
 Confusion Matrix SVC:
  [[ 9  0  1]
@@ -340,20 +341,22 @@ Confusion Matrix Voting:
  [ 0  0 54]]
 ```
 
-### Classification Report
+Secara umum, dari hasil *confusion matrix*, ***Decision Tree*** adalah model yang paling baik dalam melakukan klasifikasi. Model ***Decision Tree*** berhasil mengklasifikasikan semua sampel dengan benar, tanpa ada kesalahan klasifikasi. Sedangkan model *SVC*, *KNN*, dan *Voting memiliki* kinerja yang serupa dengan kebanyakan sampel diklasifikasikan dengan benar, namun dengan beberapa kesalahan yang terjadi.
 
-**Classification report** adalah laporan yang digunakan untuk mengevaluasi kinerja dari suatu model machine learning terutama pada task klasifikasi. Classification report menunjukkan beberapa metrics performance seperti accuracy, precision, recall, dan F1-score. Berikut adalah penjelasan dari masing-masing metrics performance:
-1. **Accuracy**: Rasio prediksi benar dari keseluruhan prediksi yang dilakukan oleh model.
-2. **Precision**: Rasio prediksi benar positif dibandingkan dengan keseluruhan prediksi positif yang dilakukan oleh model.
-3. **Recall**: Rasio prediksi benar positif dibandingkan dengan keseluruhan data yang benar positif.
-4. **F1-Score**: Rata-rata harmonik dari precision dan recall.
+### *Classification Report*
+
+***Classification report*** adalah laporan yang digunakan untuk mengevaluasi kinerja dari suatu model *machine learning* terutama pada task klasifikasi. *Classification report* menunjukkan beberapa *metrics performance* seperti *accuracy*, *precision*, *recall*, dan *F1-score*. Berikut adalah penjelasan dari masing-masing *metrics performance*:
+1. ***Accuracy***: Rasio prediksi benar dari keseluruhan prediksi yang dilakukan oleh model.
+2. ***Precision***: Rasio prediksi benar positif dibandingkan dengan keseluruhan prediksi positif yang dilakukan oleh model.
+3. ***Recall***: Rasio prediksi benar positif dibandingkan dengan keseluruhan data yang benar positif.
+4. ***F1-Score***: Rata-rata harmonik dari *precision* dan *recall*.
 
 ![Rumus Metrics Performance](assets/03_02.webp)
 
-Gambar 10. Rumus Metrics Performance
+Gambar 10. Rumus *Metrics Performance*
 <br>
 
-Beriikut adalah hasil dari classification report untuk model yang telah dibangun:
+Beriikut adalah hasil dari *classification report* untuk model yang telah dibangun:
 ```
 Classification report SVC:
               precision    recall  f1-score   support
@@ -406,17 +409,28 @@ Classification report Voting Classifier:
 weighted avg       0.99      0.99      0.99       130
 ```
 
+Dari interpretasi tersebut, dapat disimpulkan bahwa semua model memiliki performa yang sangat baik dengan akurasi yang tinggi dan *f1-score* yang baik pula. Namun, model ***Decision Tree*** memperoleh hasil yang sempurna dengan akurasi dan *f1-score* 1.00 untuk setiap kelas, sehingga bisa dianggap sebagai model terbaik dalam hal ini.
+
 ### Kesimpulan Evaluasi
 
-Selain melihat performa dari model train data dan test data, dalam evaluasi ini juga melihat performa pada uji cross validasi untuk mengetahui apakah model yang dibuat memiliki kemungkinan overfitting dan underfitting dengan melihat akurasi rata-rata dan standar deviasi yang rendah.
+Berdasarkan hasil evaluasi, tidak terdapat perbedaan signifikan antara performa model pada data *train*, *test*, dan *cross validation*. Hal ini menunjukkan bahwa model yang dibangun memiliki hasil yang cukup baik dan kecil kemungkinan mengalami *overfitting* atau *underfitting*.
 
-Berdasarkan hasil evaluasi, tidak ada perbedaan yang signifikan antara performa model pada train data, test data, dan cross validation. Hal ini menunjukkan bahwa model yang dibangun memiliki kemungkinan kecil untuk overfitting dan underfitting.
+Dari hasil evaluasi, ***Decision Tree*** menunjukkan **performa terbaik** dengan akurasi dan *F1-score* sempurna pada setiap kelas. Hal ini menjadikannya model ideal untuk klasifikasi kualitas susu. Namun, perlu diingat bahwa ***Decision Tree*** memiliki kecenderungan untuk ***overfitting***. Oleh karena itu, ***Voting Classifier*** juga menjadi pilihan yang patut dipertimbangkan.
 
-Jika dilihat dari hasil evaluasi, model **Decision Tree** memiliki performa terbaik dengan akurasi 100% dan F1-Score 100%. Akan tetapi, model ini memiliki kecenderungan untuk overfitting. Oleh karena itu, model **Voting Classifier** yang menggabungkan tiga model machine learning terbaik sebelumnya adalah model terbaik yang memenuhi standar performa yang ditetapkan. Model **Voting Classifier** juga memiliki akurasi train data, test data, dan cross validation yang perbedaannya sangat kecil, sehingga model ini memiliki kemungkinan kecil untuk overfitting dan underfitting.
+***Voting Classifier*** merupakan model ensemble yang menggabungkan tiga model *machine learning* terbaik (*SVC*, *Decision Tree*, dan *KNN*). Model ini memiliki performa kuat dan stabil pada semua metrik evaluasi, serta memiliki kelebihan dalam mengurangi overfitting.
 
-## Acknowledgement
+## Referensi
 
-- Pradana, R. A., Cholissodin, I., & Hidayat, N. (n.d.). Klasifikasi Mutu Susu Sapi menggunakan Metode Modified K-Nearest Neighbor (MKNN). Retrieved from https://j-ptiik.ub.ac.id/index.php/j-ptiik/article/view/10813
-- Business Studies. (n.d.). Retrieved from https://www.studysmarter.co.uk/explanations/business-studies/managerial-economics/decision-tree-method/#:~:text=The%20Decision%20Tree%20Method%20comes,small%20variations%2C%20and%20biased%20learning
-- K, D. (2023). Top 4 advantages and disadvantages of Support Vector Machine or SVM. Retrieved from https://dhirajkumarblog.medium.com/top-4-advantages-and-disadvantages-of-support-vector-machine-or-svm-a3c06a2b107
-- Genesis, By, & Genesis. (2018). Pros and Cons of K-Nearest Neighbors. Retrieved from https://www.fromthegenesis.com/pros-and-cons-of-k-nearest-neighbors/
+*[1] G. Castellini, S. Barello, dan A. C. Bosio, “Milk Quality Conceptualization: A Systematic Review of Consumers’, Farmers’, and Processing Experts’ Views,” Foods, vol. 12, no. 17, hlm. 3215, Agu 2023, doi: 10.3390/foods12173215.*
+
+*[2] A. Brodziak, J. Wajs, M. Zuba-Ciszewska, J. Król, M. Stobiecka, dan A. Jańczuk, “Organic versus Conventional Raw Cow Milk as Material for Processing,” Animals, vol. 11, no. 10, hlm. 2760, Sep 2021, doi: 10.3390/ani11102760.*
+
+*[3] H.-M. Kaltenbach, A Concise Guide to Statistics. dalam SpringerBriefs in Statistics. Berlin, Heidelberg: Springer Berlin Heidelberg, 2012. doi: 10.1007/978-3-642-23502-3.*
+
+*[4] V. Y. Kulkarni, P. K. Sinha, dan M. C. Petare, “Weighted Hybrid Decision Tree Model for Random Forest Classifier,” J. Inst. Eng. India Ser. B, vol. 97, no. 2, hlm. 209–217, Jun 2016, doi: 10.1007/s40031-014-0176-y.*
+
+*[5] D. J. Kalita, V. P. Singh, dan V. Kumar, “A Survey on SVM Hyper-Parameters Optimization Techniques,” dalam Social Networking and Computational Intelligence, vol. 100, R. K. Shukla, J. Agrawal, S. Sharma, N. S. Chaudhari, dan K. K. Shukla, Ed., dalam Lecture Notes in Networks and Systems, vol. 100. , Singapore: Springer Singapore, 2020, hlm. 243–256. doi: 10.1007/978-981-15-2071-6_20.*
+
+*[6] K. Taunk, S. De, S. Verma, dan A. Swetapadma, “A Brief Review of Nearest Neighbor Algorithm for Learning and Classification,” dalam 2019 International Conference on Intelligent Computing and Control Systems (ICCS), Madurai, India: IEEE, Mei 2019, hlm. 1255–1260. doi: 10.1109/ICCS45141.2019.9065747.*
+
+*[7] I. Gandhi dan M. Pandey, “Hybrid Ensemble of classifiers using voting,” dalam 2015 International Conference on Green Computing and Internet of Things (ICGCIoT), Greater Noida, Delhi, India: IEEE, Okt 2015, hlm. 399–404. doi: 10.1109/ICGCIoT.2015.7380496.*
