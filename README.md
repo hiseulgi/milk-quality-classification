@@ -105,24 +105,28 @@ Beberapa informasi yang dapat diambil dari *descriptive statistics* diatas adala
 
 ### *EDA: Uni-Variate Analysis*
 
-![Distribusi Label](assets/01_01.png)
+![01_01](https://github.com/hiseulgi/milk-quality-classification/assets/73764468/0a1f7297-3736-46bc-af4a-c47ffc03ab5f)
+<!-- ![Distribusi Label](assets/01_01.png) -->
 
 Gambar 1. Distribusi Label
 <br>
 
-![Distribusi Fitur Kategori](assets/01_02.png)
+![Distribusi Fitur Kategori](https://github.com/hiseulgi/milk-quality-classification/assets/73764468/7dea6c26-39f8-4c5e-8bb0-89212b2d65f8)
+<!-- ![Distribusi Fitur Kategori](assets/01_02.png) -->
 
 Gambar 2. Distribusi Fitur Kategori
 <br>
 
-![Histogram Fitur Numerik](assets/01_03.png)
+![Histogram Fitur Numerik](https://github.com/hiseulgi/milk-quality-classification/assets/73764468/79bd9c46-7d84-4403-bfbb-476eea19813c)
+<!-- ![Histogram Fitur Numerik](assets/01_03.png) -->
 
 Gambar 3. Histogram Fitur Numerik
 <br>
 
-![Boxplot Fitur Numerik](assets/01_04.png)
+![Boxplot Fitur Numerik](https://github.com/hiseulgi/milk-quality-classification/assets/73764468/3f0fbdf9-46c6-46a3-8ec1-d5d730cbe236)
+<!-- ![Boxplot Fitur Numerik](assets/01_04.png) -->
 
-Gambar 4. Boxplot Fitur Numerik
+Gambar 4. *Boxplot* Fitur Numerik
 <br>
 
 Informasi yang didapatkan dari *uni-variate analysis*:
@@ -141,7 +145,8 @@ Sebelum melakukan *multi-variate analysis*, dilakukan *label encoding* pada kolo
 
 Selanjutnya, dilakukan visualisasi *heatmap* korelasi antar fitur. Hasil dari visualisasi *heatmap* korelasi menunjukkan:
 
-![Heatmap Korelasi](assets/01_05.png)
+![Heatmap Korelasi](https://github.com/hiseulgi/milk-quality-classification/assets/73764468/8b643bd6-97ec-4b3d-9c01-f003ec3bf71f)
+<!-- ![Heatmap Korelasi](assets/01_05.png) -->
 
 Gambar 5. *Heatmap* Korelasi
 <br>
@@ -178,17 +183,21 @@ Hasil dari *outlier handling* menunjukkan:
   - Warna: 32 baris
 
 Berikut adalah visualisasi data hasil setelah *outlier handling*:
-![Boxplot Fitur Numerik Setelah *Outlier Handling*](assets/02_01.png)
+
+![Boxplot Fitur Numerik Setelah *Outlier Handling*](https://github.com/hiseulgi/milk-quality-classification/assets/73764468/62f63990-b555-43fc-8151-0d42c63e325f)
+<!--![Boxplot Fitur Numerik Setelah *Outlier Handling*](assets/02_01.png)-->
 
 Gambar 6. Boxplot Fitur Numerik Setelah *Outlier Handling*
 <br>
 
-![Histogram Fitur Numerik Setelah *Outlier Handling*](assets/02_02.png)
+![Histogram Fitur Numerik Setelah *Outlier Handling*](https://github.com/hiseulgi/milk-quality-classification/assets/73764468/20352543-7f64-408f-b0cb-39089125591b)
+<!--![Histogram Fitur Numerik Setelah *Outlier Handling*](assets/02_02.png)-->
 
 Gambar 7. Histogram Fitur Numerik Setelah *Outlier Handling*
 <br>
 
-![Heatmap Korelasi Setelah *Outlier Handling*](assets/02_03.png)
+![Heatmap Korelasi Setelah *Outlier Handling*](https://github.com/hiseulgi/milk-quality-classification/assets/73764468/17a128ef-5a5e-4be3-9390-4f823c977b10)
+<!--![Heatmap Korelasi Setelah *Outlier Handling*](assets/02_03.png)-->
 
 Gambar 8. *Heatmap* Korelasi Setelah *Outlier Handling*
 <br>
@@ -307,7 +316,8 @@ Hasil *cross validation* menunjukkan performa ***Decision Tree*** yang sangat ba
 
 ***Confusion matrix*** adalah tabel yang digunakan untuk mengevaluasi kinerja dari suatu model *machine learning* terutama pada task klasifikasi. *Confusion matrix* menunjukkan jumlah prediksi yang benar dan yang salah yang dibagi berdasarkan kelas target.
 
-![Confusion Matrix](assets/03_01.jpg)
+![Confusion Matrix](https://github.com/hiseulgi/milk-quality-classification/assets/73764468/cb654f0b-229a-4986-92af-0f3192677414)
+<!-- ![Confusion Matrix](assets/03_01.jpg) -->
 
 Gambar 9. Penjelasan *Confusion Matrix*
 <br>
@@ -351,7 +361,8 @@ Secara umum, dari hasil *confusion matrix*, ***Decision Tree*** adalah model yan
 3. ***Recall***: Rasio prediksi benar positif dibandingkan dengan keseluruhan data yang benar positif.
 4. ***F1-Score***: Rata-rata harmonik dari *precision* dan *recall*.
 
-![Rumus Metrics Performance](assets/03_02.webp)
+![Rumus Metrics Performance](https://github.com/hiseulgi/milk-quality-classification/assets/73764468/522fa9fa-6f86-4010-bc91-4a04b9564fb5)
+<!--![Rumus Metrics Performance](assets/03_02.webp)-->
 
 Gambar 10. Rumus *Metrics Performance*
 <br>
