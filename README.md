@@ -18,9 +18,9 @@
     - [*Splitting Data*](#splitting-data)
     - [*Feature Scaling (Standardization)*](#feature-scaling-standardization)
   - [*Modeling*](#modeling)
-    - [***Decision Tree Classifier***](#decision-tree-classifier)
-    - [***Support Vector Machine (SVM)***](#support-vector-machine-svm)
-    - [***K-Nearest Neighbor***](#k-nearest-neighbor)
+    - [*Decision Tree Classifier*](#decision-tree-classifier)
+    - [*Support Vector Machine (SVM)*](#support-vector-machine-svm)
+    - [*K-Nearest Neighbor*](#k-nearest-neighbor)
     - [*Voting Classifier*](#voting-classifier)
     - [Perbandingan Akurasi](#perbandingan-akurasi)
   - [Evaluation](#evaluation)
@@ -253,15 +253,15 @@ Tabel 2. Hasil Evaluasi Baseline Model
 Selanjutnya, *model selection* dilakukan dengan memilih tiga *traditional machine learning* model dengan akurasi dan *F1-score* tertinggi.
 
 
-### ***Decision Tree Classifier***
+### *Decision Tree Classifier*
 
 *Decision Tree Classifier* merupakan model yang memiliki struktur pohon keputusan mudah dipahami, memungkinkan pelacakan pengaruh fitur terhadap prediksi akhir. Model ini cepat dilatih dan tidak memerlukan scaling data. Kelemahannya, *Decision Tree Classifier* rentan terhadap *overfitting*, memiliki variansi tinggi, dan bias terhadap fitur kategoris dengan banyak level [4].
 
-### ***Support Vector Machine (SVM)***
+### *Support Vector Machine (SVM)*
 
 *Support Vector Machine (SVM)* merupakan model yang efektif untuk data dengan dimensi tinggi dan mampu menangani hubungan *non-linear* antara fitur dan label. Model ini mencegah *overfitting* dengan *margin classification*, mencari *hyperplane* dengan margin terbesar untuk memisahkan kelas. Kelemahan *SVM* adalah waktu pelatihan yang lama untuk dataset besar dan sensitivitas terhadap *noise* dalam data [5].
 
-### ***K-Nearest Neighbor***
+### *K-Nearest Neighbor*
 
 *K-Nearest Neighbor (KNN)* merupakan model sederhana dan mudah diimplementasikan yang tidak membuat asumsi tentang distribusi data, sehingga cocok untuk data non-normal. Kelebihan *KNN* lainnya adalah tidak memerlukan waktu pelatihan dan dapat langsung digunakan. Kelemahan *KNN* adalah kinerjanya yang menurun pada data dimensi tinggi (*curse of dimensionality*), sensitivitas terhadap data imbang (*imbalanced data*), dan *outlier* yang dapat mempengaruhi prediksi secara signifikan [6].
 
